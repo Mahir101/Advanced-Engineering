@@ -1,0 +1,17 @@
+
+- hosts: web
+  become: true
+  tasks:
+  - name: Install Apache
+    apt: pkg=apache2 state=latest
+  - name: Copy web application files
+    copy: src=app/ dest=/var/www/html/
+  - name: Start Apache
+    service: name=apache2 state=started
+
+
+# the ansible playbook targets the web group 
+
+# In this example, the playbook has a single play that targets the web group of servers. The tasks in the play include installing Apache, copying the web application files to the server, and starting the Apache service.
+
+# This is just a simple example of how you can use ansible to automate the deployment of a web application. Ansible is a very powerful and flexible tool, and there are many other options and configurations available. You can find more information about using ansible to automate deployment in the ansible documentation.
